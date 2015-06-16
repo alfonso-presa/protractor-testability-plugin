@@ -1,8 +1,8 @@
 # protractor-testability-plugin
 
-This is a WIP - It's pending for https://github.com/angular/protractor/pull/2104 to be released and some other protractor improvements.
+This is a WIP - It's pending for https://github.com/angular/protractor/pull/2104 to be released.
 
-Make projects and libraries not built against angularjs work in sync with protractor.
+This plugins enables testing projects and libraries not built against angularjs in sync with protractor.
 
 ## Installation
 
@@ -16,15 +16,11 @@ cd protractor
 git checkout plugin-api
 npm link
 
-cd ..
-git clone https://github.com/alfonso-presa/protractor-testability-plugin.git
-cd protractor-testability-plugin
-npm link
-
 #CD where ever your project is
 cd ~/workspace/myproject
 npm link protractor
-npm link protractor-testability-plugin
+
+npm install --save-dev protractor-testability-plugin
 ```
 
 Now add this to protractor.conf.js ()
@@ -39,7 +35,17 @@ plugins: [{
 
 Check https://github.com/alfonso-presa/testability.js to see how to make testings frameworks wait for your libraries and applications.
 
-Also check the test/samples folder of this repo for some examples.
+Basically everytime you are doing something asynchronous that is not using angular's $http or $timeout you should do:
+
+```js
+if (testability) {
+	testability.wait.for(myPromise);
+}
+```
+You can avoid checking for the testability object everytime if you include it directly on the page.
+
+
+Also check the test/samples folder of this repo for some working examples.
 
 ## License
 

@@ -32,11 +32,10 @@
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
-    "protractor": "^2.1.0", //This protractor version is the one at https://github.com/sjelin/protractor#plugin-api
-                            //In wait for https://github.com/angular/protractor/pull/2104
+    "protractor": "^2.1.0",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "testiblity.js": "*" //It's still not published to NPM. Git clone from https://github.com/alfonso-presa/testability.js.git and npm link in project
+    "testiblity.js": "*"
   }
 }

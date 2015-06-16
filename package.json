@@ -1,6 +1,6 @@
 {
   "name": "protractor-testability-plugin",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/protractor-testability-plugin.js",
   "readmeFilename": "README.md",
@@ -36,6 +36,6 @@
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "testability.js": "*"
+    "testability.js": "^0.1.0"
   }
 }

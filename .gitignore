@@ -1,0 +1,10 @@
+node_modules
+./dist
+./bower_components
+test/temp
+tmp
+docs
+.DS_Store
+npm-debug.log
+coverage
+report

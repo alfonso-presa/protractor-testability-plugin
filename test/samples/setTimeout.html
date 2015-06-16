@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample</title>
+		<script type="application/javascript">
+			function somethingAsync() {
+				setTimeout(function () {
+					if(window.testability) {window.testability.wait.oneMore()};
+					setTimeout(function () {
+						if(window.testability) { window.testability.wait.oneLess()}
+						document.getElementById('placeholder').innerHTML = 'done!!';
+					},2000);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		This sample should make protractor wait for a setTimeout to complete.
+		<button id="work" onclick="somethingAsync()">Do something async please!</button>
+		<div id="placeholder"></div>
+	</body>
+</html>

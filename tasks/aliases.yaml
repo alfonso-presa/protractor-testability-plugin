@@ -1,0 +1,16 @@
+default:
+  - build
+
+test:
+  - connect:serve
+  - protractor
+
+build:
+  - clean
+  - jshint:lib
+#  - jscs:lib
+  - lintspaces:lib
+  - umd
+  - concat
+  - test
+  - uglify

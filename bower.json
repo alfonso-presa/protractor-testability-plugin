@@ -1,0 +1,24 @@
+{
+  "name": "protractor-testability-plugin",
+  "version": "0.0.0",
+  "description": "Protractor plugin to integrate testability.js",
+  "main": "dist/protractor-testability-plugin.js",
+  "author": {
+    "name": "Alfonso Presa"
+  },
+  "repository": {
+    "url": "https://github.com/alfonso-presa/protractor-testability-plugin.js",
+    "type": "git"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script type="application/javascript">
+			function somethingAsync() {
+				setTimeout(function () {
+					if(window.testability) {window.testability.wait.oneMore()};
+					setTimeout(function () {
+						if(window.testability) { window.testability.wait.oneLess()}
+						document.getElementById('placeholder').innerHTML = 'done!!';
+					},2000);
+				});
+			}
+
+			angular.module('sample', [])
+				.controller('controller', ['$timeout', function ($timeout) {
+					var vm = this;
+					vm.somethingAsync = function () {
+						$timeout(function () {
+							vm.data = 'angular done!!';
+						},2000);
+						somethingAsync();
+					};
+
+					vm.somethingAsyncSequence = function () {
+						$timeout(function () {
+							vm.data = 'angular done!!';
+							somethingAsync();
+						},2000);
+					};
+				}]);
+		</script>
+	</head>
+	<body ng-app="sample">
+		This sample should make protractor wait for a setTimeout to complete.
+		<button id="work" onclick="somethingAsync()">Do something async not using angular please!</button>
+		<div id="placeholder"></div>
+		<div ng-controller="controller as main">
+			<button id="angular-work" ng-click="main.somethingAsync()">Do both async things please!</button>
+			<button id="angular-seq-work" ng-click="main.somethingAsyncSequence()">Do both async things in sequence please!</button>
+			<div id="angular-placeholder">{{main.data}}</div>
+		</div>
+	</body>
+</html>

@@ -39,6 +39,8 @@ plugins: [{
 
 Check https://github.com/alfonso-presa/testability.js to see how to make testings frameworks wait for your libraries and applications.
 
+Also check the test/samples folder of this repo for some examples.
+
 ## License
 
 MIT

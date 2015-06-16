@@ -1,4 +1,4 @@
-/*! protractor-testability-plugin - v0.1.1
+/*! protractor-testability-plugin - v0.1.2
  *  Release on: 2015-06-16
  *  Copyright (c) 2015 Alfonso Presa
  *  Licensed MIT */
@@ -25,7 +25,7 @@ var fs = require('fs');
 return {
     name: 'protractor-testability-plugin',
     onPageLoad: function () {
-        var testability = fs.readFileSync('node_modules/testability.js/dist/testability.js').toString();
+        var testability = fs.readFileSync(require.resolve('testability.js')).toString();
         browser.executeScript(testability);
         browser.executeScript(function () {
             if(!window.angular) {

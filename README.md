@@ -1,7 +1,5 @@
 # protractor-testability-plugin
 
-[![Build Status](https://secure.travis-ci.org/alfonso-presa/protractor-testability-plugin.png?branch=master)](http://travis-ci.org/alfonso-presa/protractor-testability-plugin)
-
 This is a WIP - It's pending for https://github.com/angular/protractor/pull/2104 to be released and some other protractor improvements.
 
 Make projects and libraries not built against angularjs work in sync with protractor.

@@ -29,7 +29,8 @@ return {
         browser.executeScript(testability);
         browser.executeScript(function () {
             if(!window.angular) {
-                //TODO: This is very very very (very^n) dirty... but the only way right now to make protractor work without .
+                // TODO: This is very very very (very^n) dirty...
+                // but the only way right now to make protractor work without setting ignoreSynchronization.
                 window.angular = {
                     resumeBootstrap: function() {},
                     module: function (){
@@ -59,13 +60,11 @@ return {
         });
     },
     waitForPromise: function () {
-        return browser.executeAsyncScript_(
-                'return testability.when.ready.apply(null,arguments)',
-                'protractor-testability-plugin.waitForPromise()')
+        return browser.executeAsyncScript(
+                'return testability.when.ready.apply(null,arguments)')
             .then(function(browserErr) {
                 if (browserErr) {
-                  throw 'Error while waiting to ' +
-                        'sync with the page: ' + JSON.stringify(browserErr);
+                  throw 'Error while waiting to sync with the page: ' + JSON.stringify(browserErr);
             }
         });
     }

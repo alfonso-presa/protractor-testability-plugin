@@ -36,6 +36,6 @@
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "testiblity.js": "*"
+    "testability.js": "*"
   }
 }

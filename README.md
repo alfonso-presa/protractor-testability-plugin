@@ -1,4 +1,5 @@
 # protractor-testability-plugin
+[![Build Status](https://travis-ci.org/alfonso-presa/protractor-testability-plugin.svg?branch=master)](https://travis-ci.org/alfonso-presa/protractor-testability-plugin)
 
 This is a WIP - It's pending for https://github.com/angular/protractor/pull/2104 to be released.
 

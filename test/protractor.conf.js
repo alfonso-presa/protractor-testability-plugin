@@ -1,4 +1,4 @@
-exports.config = {
+var config = {
   directConnect: false,
 
   // Capabilities to be passed to the webdriver instance.
@@ -19,8 +19,41 @@ exports.config = {
     path: '..'
   }],
 
+  sauceUser: process.env.SAUCE_USERNAME,
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
+
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
   }
 };
+
+if (process.env.TRAVIS_BUILD_NUMBER){
+  config.multiCapabilities= [{
+      'browserName': 'firefox',
+      'version': '28',
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      name: 'protractor-testability-plugin Firefox'
+    }, {
+      'browserName': 'chrome',
+      'version': '34',
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      name: 'protractor-testability-plugin Chrome'
+    }, {
+      'browserName': 'safari',
+      'version': '7',
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      name: 'protractor-testability-plugin Safari'
+    }, {
+      'browserName': 'internet explorer',
+      'version': '10',
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      name: 'protractor-testability-plugin IE10'
+    }];
+}
+
+exports.config = config;

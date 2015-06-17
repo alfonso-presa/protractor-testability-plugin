@@ -1,5 +1,5 @@
 /*! protractor-testability-plugin - v0.1.3
- *  Release on: 2015-06-16
+ *  Release on: 2015-06-17
  *  Copyright (c) 2015 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -26,7 +26,7 @@ return {
     name: 'protractor-testability-plugin',
     onPageLoad: function () {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
-        browser.executeScript(testability);
+        browser.executeScript('if(!window.testability) {' + testability + '}');
         browser.executeScript(function () {
             if(!window.angular) {
                 // TODO: This is very very very (very^n) dirty...
@@ -38,21 +38,9 @@ return {
                             config: function () {return this;}
                         };
                     },
-                    element: function () {
+                    getTestability: function () {
                         return {
-                            injector: function () {
-                                return {
-                                    get: function (s) {
-                                        if(s === '$browser') {
-                                            return {
-                                                notifyWhenNoOutstandingRequests: function (callback) {
-                                                    callback();
-                                                }
-                                            };
-                                        }
-                                    }
-                                };
-                            }
+                            whenStable: function (cb) {cb();}
                         };
                     }
                 };

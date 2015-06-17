@@ -32,7 +32,7 @@
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
-    "protractor": "^2.1.0",
+    "protractor": "https://github.com/alfonso-presa/protractor/archive/2104.tar.gz",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {

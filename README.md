@@ -45,9 +45,7 @@ Check https://github.com/alfonso-presa/testability.js to see how to make testing
 Basically everytime you are doing something asynchronous that is not using angular's $http or $timeout you should do:
 
 ```js
-if (testability) {
-	testability.wait.for(myPromise);
-}
+window.testability && window.testability.wait.for(myPromise);
 ```
 This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
 

@@ -5,11 +5,11 @@
 		<script type="application/javascript">
 			function somethingAsync() {
 				setTimeout(function () {
-					if(window.testability) {window.testability.wait.oneMore()};
+					window.testability && window.testability.wait.oneMore();
 					setTimeout(function () {
-						if(window.testability) { window.testability.wait.oneLess()}
+						window.testability && window.testability.wait.oneLess();
 						document.getElementById('placeholder').innerHTML = 'done!!';
-					},2000);
+					},500);
 				});
 			}
 		</script>

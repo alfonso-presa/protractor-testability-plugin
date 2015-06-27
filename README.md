@@ -13,21 +13,13 @@ If you're coding a reusable front end library, you definitely should consider no
 
 ## Installation
 
-This will be a lot easier in the future.... right now:
+Right now you need the head version of protractor so:
 
 ```bash
-# CD Into some working dir
-
-git clone https://github.com/sjelin/protractor.git
-cd protractor
-git checkout plugin-api
-npm link
-
 #CD where ever your project is
-cd ~/workspace/myproject
-npm link protractor
 
-npm install --save-dev protractor-testability-plugin
+cd ~/workspace/myproject
+npm install --save-dev protractor-testability-plugin https://github.com/angular/protractor/archive/master.tar.gz
 ```
 
 Now add this to protractor.conf.js ()

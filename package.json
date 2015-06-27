@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "scripts":{
+  "scripts": {
     "test": "grunt test"
   },
   "devDependencies": {
@@ -35,10 +35,11 @@
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
-    "protractor": "https://github.com/alfonso-presa/protractor/archive/2104.tar.gz",
+    "protractor": "https://github.com/angular/protractor/archive/master.tar.gz",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
+    "protractor": "https://github.com/angular/protractor/archive/master.tar.gz",
     "testability.js": "^0.1.0"
   }
 }

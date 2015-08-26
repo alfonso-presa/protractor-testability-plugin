@@ -35,11 +35,11 @@
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
-    "protractor": "https://github.com/angular/protractor/archive/master.tar.gz",
+    "protractor": "^2.2.0",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "protractor": "https://github.com/angular/protractor/archive/master.tar.gz",
+    "protractor": "^2.2.0",
     "testability.js": "^0.1.0"
   }
 }

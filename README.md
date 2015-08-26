@@ -1,8 +1,6 @@
 # protractor-testability-plugin
 [![Build Status](https://travis-ci.org/alfonso-presa/protractor-testability-plugin.svg?branch=master)](https://travis-ci.org/alfonso-presa/protractor-testability-plugin)
 
-This is a WIP - It's pending for https://github.com/angular/protractor/pull/2104 to be released.
-
 This plugins enables testing projects and libraries not built against AngularJS services in sync with protractor (without having to set ignoreSynchronization=true). Even when using AngularJS there are situations when this plugin my become useful, like when using webworkers or comunicating via websockets.
 
 This means that your TDD/BDD tests will be a lot cleaner as you will not have to add aditional waitings and tweak timeouts to get your tests passing consistently as protractor will know when there's a task pending and it will wait automatically between each step for it to get completed.
@@ -13,13 +11,10 @@ If you're coding a reusable front end library, you definitely should consider no
 
 ## Installation
 
-Right now you need the head version of protractor so:
+Execute the following from a command line inside your project:
 
 ```bash
-#CD where ever your project is
-
-cd ~/workspace/myproject
-npm install --save-dev protractor-testability-plugin https://github.com/angular/protractor/archive/master.tar.gz
+npm install --save-dev protractor protractor-testability-plugin
 ```
 
 Now add this to protractor.conf.js ()
@@ -37,7 +32,7 @@ Check https://github.com/alfonso-presa/testability.js to see how to make testing
 Basically everytime you are doing something asynchronous that is not using angular's $http or $timeout you should do:
 
 ```js
-window.testability && window.testability.wait.for(myPromise);
+testability && testability.wait.for(myPromise);
 ```
 This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
 

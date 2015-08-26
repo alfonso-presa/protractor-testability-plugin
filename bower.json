@@ -1,6 +1,6 @@
 {
   "name": "protractor-testability-plugin",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "Protractor plugin to integrate testability.js",
   "main": "dist/protractor-testability-plugin.js",
   "author": {

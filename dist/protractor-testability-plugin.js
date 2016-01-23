@@ -49,7 +49,7 @@ return {
             function onload() {
                 if (window.$) {
                     window.$.ajaxStart(window.testability.wait.oneMore);
-                    window.$.ajaxStart(window.testability.wait.oneLess);
+                    window.$.ajaxStop(window.testability.wait.oneLess);
                 }
             }
 
@@ -77,11 +77,11 @@ return {
                         }
                         cb.apply(window, arguments);
                     };
+                    ref = setFn.apply(window, arguments);
                     if (time < 5000) {
                         window.testability.wait.oneMore();
+                        sets[ref] = true;
                     }
-                    ref = setFn.apply(window, arguments);
-                    sets[ref] = true;
                     return ref;
                 };
 

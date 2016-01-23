@@ -38,6 +38,13 @@ This plugin will include testability.js in the page for you when testing in prot
 
 Also check the test/samples folder of this repo for some working examples.
 
+## Automatic waits
+
+This plugin will make protractor wait automatically for the following async events:
+
+* JQuery ajax requests
+* setTimeout/clearTimeout
+
 ## License
 
 MIT

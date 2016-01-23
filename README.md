@@ -43,7 +43,7 @@ Also check the test/samples folder of this repo for some working examples.
 This plugin will make protractor wait automatically for the following async events:
 
 * JQuery ajax requests
-* setTimeout/clearTimeout
+* setTimeout/clearTimeout (only if it's time is below 5 secconds)
 
 ## License
 

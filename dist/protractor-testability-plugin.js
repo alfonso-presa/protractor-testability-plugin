@@ -60,7 +60,7 @@ return {
                 window.attachEvent('load', onload);
             }
 
-            function patchFunction(set, clear) {
+            function patchFunction(set, clear, filterTime) {
                 var setFn = window[set];
                 var clearFn = window[clear];
 
@@ -72,13 +72,13 @@ return {
                     var time = arguments[1];
                     arguments[0] = function () {
                         sets[ref] = undefined;
-                        if (time < 5000) {
+                        if (!filterTime || time < 5000) {
                             window.testability.wait.oneLess();
                         }
                         cb.apply(window, arguments);
                     };
                     ref = setFn.apply(window, arguments);
-                    if (time < 5000) {
+                    if (!filterTime || time < 5000) {
                         window.testability.wait.oneMore();
                         sets[ref] = true;
                     }
@@ -94,8 +94,9 @@ return {
                 };
             }
 
-            patchFunction('setTimeout', 'clearTimeout');
-            //patchFunction('setInterval', 'clearInterval');
+            patchFunction('setTimeout', 'clearTimeout', true);
+            patchFunction('setInterval', 'clearInterval', true);
+            patchFunction('setImmediate', 'clearImmediate', false);
         });
     },
     waitForPromise: function () {

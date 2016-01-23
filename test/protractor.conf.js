@@ -55,5 +55,16 @@ if (process.env.TRAVIS_BUILD_NUMBER){
       name: 'protractor-testability-plugin IE10'
     }];
 }
+else {
+    config.multiCapabilities= [{
+      'browserName': 'firefox',
+      'version': '28',
+      name: 'protractor-testability-plugin Firefox'
+    }, {
+      'browserName': 'chrome',
+      'version': '34',
+      name: 'protractor-testability-plugin Chrome'
+    }];
+}
 
 exports.config = config;

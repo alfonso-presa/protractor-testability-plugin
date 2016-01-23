@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="application/javascript">
+			function callAjax() {
+				$.ajax('mock.json').then(function (data) {
+                    $('#placeholder').html(data.contents);
+                });
+			}
+		</script>
+	</head>
+	<body>
+		This sample should make protractor wait for an Ajax call to complete.
+		<button id="work" onclick="callAjax()">Call ajax!</button>
+		<div id="placeholder"></div>
+	</body>
+</html>

@@ -14,6 +14,18 @@ describe('protractor-testability-plugin', function () {
 		});
 	});
 
+	describe('ajax jquery sample', function () {
+
+		beforeEach(function () {
+			browser.get('/test/samples/restCallJQuery.html');
+		});
+
+		it('should wait for stable testability.js when running ajax requests with JQuery automatically', function () {
+			element(by.id('work')).click();
+			expect(element(by.id('placeholder')).getText()).toBe('done!!');
+		});
+	});
+
 	describe('in angular sample', function () {
 
 		beforeEach(function () {

@@ -1,6 +1,6 @@
-/*! protractor-testability-plugin - v1.0.0
- *  Release on: 2015-08-26
- *  Copyright (c) 2015 Alfonso Presa
+/*! protractor-testability-plugin - v1.0.1
+ *  Release on: 2016-01-23
+ *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -18,6 +18,7 @@
   }
 }(this, function () {
 
+/* global browser */
 'use strict';
 
 var fs = require('fs');
@@ -28,33 +29,39 @@ return {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
         browser.executeScript('if(!window.testability) {' + testability + '}');
         browser.executeScript(function () {
-            if(!window.angular) {
+            if (!window.angular) {
                 // TODO: This is very very very (very^n) dirty...
                 // but the only way right now to make protractor work without setting ignoreSynchronization.
                 window.angular = {
-                    resumeBootstrap: function() {},
-                    module: function (){
+                    resumeBootstrap: function () { },
+                    module: function () {
                         return {
-                            config: function () {return this;}
+                            config: function () { return this; }
                         };
                     },
                     getTestability: function () {
                         return {
-                            whenStable: function (cb) {cb();}
+                            whenStable: function (cb) { cb(); }
                         };
                     }
                 };
             }
+            window.addEventListener('onload', function () {
+                if (window.$) {
+                    window.$.ajaxStart(window.testability.oneMore);
+                    window.$.ajaxStart(window.testability.oneLess);
+                }
+            });
         });
     },
     waitForPromise: function () {
         return browser.executeAsyncScript(
-                'return testability.when.ready.apply(null,arguments)')
-            .then(function(browserErr) {
+            'return testability.when.ready.apply(null,arguments)')
+            .then(function (browserErr) {
                 if (browserErr) {
-                  throw 'Error while waiting to sync with the page: ' + JSON.stringify(browserErr);
-            }
-        });
+                    throw 'Error while waiting to sync with the page: ' + JSON.stringify(browserErr);
+                }
+            });
     }
 
 };

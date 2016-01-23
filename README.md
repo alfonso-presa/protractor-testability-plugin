@@ -24,20 +24,6 @@ plugins: [{
 	path: 'node_modules/protractor-testability-plugin'
 }],
 ```
-
-## Usage
-
-Check https://github.com/alfonso-presa/testability.js to see how to make testings frameworks wait for your libraries and applications.
-
-Basically everytime you are doing something asynchronous that is not using angular's $http or $timeout you should do:
-
-```js
-testability && testability.wait.for(myPromise);
-```
-This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
-
-Also check the test/samples folder of this repo for some working examples.
-
 ## Automatic waits
 
 This plugin will make protractor wait automatically for the following async events:
@@ -46,6 +32,18 @@ This plugin will make protractor wait automatically for the following async even
 * setTimeout/clearTimeout, setInterval/clearInterval: only if it's time is below 5 secconds, because otherwise it's considered a timeout.
 * setImmediate/clearImmediate
 
+## Advanced Usage
+
+Check https://github.com/alfonso-presa/testability.js to see how to make testings frameworks wait for your libraries and applications.
+
+Basically everytime you are doing something asynchronous that is not using angular's $http or $timeout, or is not in the automatic waits, you should do:
+
+```js
+testability && testability.wait.for(myPromise);
+```
+This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
+
+Also check the test/samples folder of this repo for some working examples.
 
 ## License
 

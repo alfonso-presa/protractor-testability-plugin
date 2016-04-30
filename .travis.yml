@@ -2,8 +2,6 @@ language: node_js
 node_js:
 - '4.2.1'
 before_install: npm install -g grunt-cli
-before_script:
-    - ./node_modules/.bin/webdriver-manager update
 env:
   global:
     - secure: UxH2zeQN24n6MVgKHCo3FJproM7LFxcoiL1jd23RUjRhVSMp67wyrvIge+bS1jSrMtEQSfvpn3Zi2AbjE8bVwwRGopPt7dk/IUEVQllXvTYg6xCgxmNrJLyAxL32rlYomfTVwB2AZVDs4NbH/lBt/zylcKn61AxIA9wSYkeawUoGYltKNSYfIrvZTOsBFItroo1QB7ibPLFfbbW/akTjkzgB6/txTvI3lGeiFr2Q4jjtxzevjjC3g2zZ+TbO9JANP4/1EOWDg6yy+MHna/PVdLZPEujVm2DnItvnKxLU+t3bAzDeXJDIlh20kDMm88ZwAvE3+X7nKohlOqXBwBRWpLBnX0eYLpfSq5iyDvsEra01O7TcazRbYaTa6BpSaZ+3JB0oyxYVcqyWg4PLyqVWYey2st7x6XB3I1JK6K2jT0QRewNRCLBUF4Y+sWfNWtSG6ohcsfi27nbIOcycORQHg/ZdQWDBmS5u2kVzuH/vJtq5krQyTMivG7+xA5v0g7QgB+b2sGlG3OCdTOGZAHZ+8RuQTF8LOtJhxL7T8wtn3t7DieC0NP3OwsK3B34Hop2hLVaXXsN9tinTY+7Oa6L0EgdfzSqtAz2UejVM/HXIVhiJ84vp1oyLnqSjnKi8291Cmnc+u0YJA5USo8rLaRfj/J5OyJgULoFN5SfDf84SK20=

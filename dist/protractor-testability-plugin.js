@@ -45,6 +45,10 @@ return {
                         };
                     }
                 };
+
+                window.getAllAngularTestabilities = function() {
+                    return [ window.angular.getTestability() ];
+                };
             }
             function onload() {
                 if (window.$) {

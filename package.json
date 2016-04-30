@@ -29,7 +29,7 @@
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-groc": "^0.4.5",
     "grunt-jscs": "^1.1.0",
-    "grunt-protractor-runner": "^2.0.0",
+    "grunt-protractor-runner": "^3.0.0",
     "grunt-umd": "^2.3.0",
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
@@ -37,7 +37,7 @@
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "protractor": "^2.2.0",
+    "protractor": "^3.3.0",
     "testability.js": "^0.1.0"
   }
 }

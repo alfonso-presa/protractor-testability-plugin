@@ -1,5 +1,5 @@
-/*! protractor-testability-plugin - v1.0.1
- *  Release on: 2016-01-24
+/*! protractor-testability-plugin - v1.0.2
+ *  Release on: 2016-04-30
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -94,9 +94,30 @@ return {
                 };
             }
 
+            function patchPromiseFunction(set) {
+                var setFn = window[set];
+
+                window[set] = function () {
+                    var ref;
+
+                    ref = setFn.apply(window, arguments);
+
+                    ref.then(function (result) {
+                        window.testability.wait.oneLess();
+                        return result;
+                    });
+
+                    window.testability.wait.oneMore();
+
+                    return ref;
+                };
+            }
+
             patchFunction('setTimeout', 'clearTimeout', true);
             patchFunction('setInterval', 'clearInterval', true);
             patchFunction('setImmediate', 'clearImmediate', false);
+
+            patchPromiseFunction('fetch');
         });
     },
     waitForPromise: function () {

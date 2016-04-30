@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "protractor": "^3.3.0",
-    "testability.js": "^0.1.0"
+    "testability.js": "^0.2.0"
   }
 }

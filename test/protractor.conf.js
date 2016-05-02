@@ -43,7 +43,7 @@ if (process.env.TRAVIS_BUILD_NUMBER){
       name: 'protractor-testability-plugin Chrome'
     }, {
       'browserName': 'safari',
-      'version': '7',
+      'version': '8',
       build: process.env.TRAVIS_BUILD_NUMBER,
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       name: 'protractor-testability-plugin Safari'

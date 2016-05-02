@@ -2,10 +2,6 @@
  *  Release on: 2016-05-02
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
-/*! protractor-testability-plugin - v1.0.1
- *  Release on: 2016-01-24
- *  Copyright (c) 2016 Alfonso Presa
- *  Licensed MIT */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
@@ -48,6 +44,10 @@ return {
                             whenStable: function (cb) { cb(); }
                         };
                     }
+                };
+
+                window.getAllAngularTestabilities = function() {
+                    return [ window.angular.getTestability() ];
                 };
             }
             function onload() {
@@ -98,9 +98,30 @@ return {
                 };
             }
 
+            function patchPromiseFunction(set) {
+                var setFn = window[set];
+
+                window[set] = function () {
+                    var ref;
+
+                    ref = setFn.apply(window, arguments);
+
+                    ref.then(function (result) {
+                        window.testability.wait.oneLess();
+                        return result;
+                    });
+
+                    window.testability.wait.oneMore();
+
+                    return ref;
+                };
+            }
+
             patchFunction('setTimeout', 'clearTimeout', true);
             patchFunction('setInterval', 'clearInterval', true);
             patchFunction('setImmediate', 'clearImmediate', false);
+
+            patchPromiseFunction('fetch');
         });
     },
     waitForPromise: function () {

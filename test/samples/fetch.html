@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="application/javascript">
+			function callFetch() {
+                fetch('mock.json').then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    $('#placeholder').html(data.contents);
+                });
+			}
+		</script>
+	</head>
+	<body>
+		This sample should make protractor wait for fetch call to complete.
+		<button id="work" onclick="callFetch()">Call fetch bitch!</button>
+		<div id="placeholder"></div>
+	</body>
+</html>

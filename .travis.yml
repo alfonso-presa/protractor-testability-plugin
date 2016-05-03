@@ -5,8 +5,7 @@ before_install: npm install -g grunt-cli
 before_script:
     - ./node_modules/.bin/webdriver-manager update
 env:
-  global:
-    SAUCE_ACCESS_KEY:af8788b9-bde3-4e85-8557-cacfbac98cdc
-    SAUCE_USERNAME: alfonso-presa
+  SAUCE_ACCESS_KEY=af8788b9-bde3-4e85-8557-cacfbac98cdc
+  SAUCE_USERNAME=alfonso-presa
 addons:
   sauce_connect: true

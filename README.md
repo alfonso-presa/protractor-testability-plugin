@@ -5,8 +5,6 @@ This plugins enables testing projects and libraries not built against AngularJS 
 
 This means that your TDD/BDD tests will be a lot cleaner as you will not have to add aditional waitings and tweak timeouts to get your tests passing consistently as protractor will know when there's a task pending and it will wait automatically between each step for it to get completed.
 
-Ofcourse this is not magical and when coding the applications or libraries you should notify testability.js about the pending task providing it a promise.
-
 If you're coding a reusable front end library, you definitely should consider notifying testability.js when doing something asynchronous as it will make e2e testing in projects using your library a lot more easy.
 
 ## Installation
@@ -28,7 +26,7 @@ plugins: [{
 
 This plugin will make protractor wait automatically for the following async events:
 
-* JQuery ajax requests
+* Ajax requests
 * setTimeout/clearTimeout, setInterval/clearInterval: only if it's time is below 5 seconds, because otherwise it's considered a timeout.
 * setImmediate/clearImmediate
 * fetch

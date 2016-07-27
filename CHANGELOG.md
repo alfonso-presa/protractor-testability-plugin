@@ -1,3 +1,19 @@
+<a name"1.0.2"></a>
+### 1.0.2 (2016-07-27)
+
+
+#### Bug Fixes
+
+* **dist:** Fix missing dist files from PR 3 ([270e2033](https://github.com/alfonso-presa/protractor-testability-plugin/commit/270e2033))
+* **e2e_tests:** Upgrade to safari 8 due to saucelabs probs with 7 ([476915b1](https://github.com/alfonso-presa/protractor-testability-plugin/commit/476915b1))
+* **travis:** Fix wrong travis syntax ([7d041275](https://github.com/alfonso-presa/protractor-testability-plugin/commit/7d041275))
+
+
+#### Features
+
+* **XMLHttpRequest:** Also detect outstanding requests ([1f6e7d71](https://github.com/alfonso-presa/protractor-testability-plugin/commit/1f6e7d71))
+
+
 <a name"1.0.1"></a>
 ### 1.0.1 (2016-01-23)
 

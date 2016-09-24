@@ -29,6 +29,8 @@ return {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
         browser.executeScript('if(!window.testability) {' + testability + '}');
         browser.executeScript(function () {
+            var setTimeout = window.setTimeout;
+
             if (!window.angular) {
                 // TODO: This is very very very (very^n) dirty...
                 // but the only way right now to make protractor work without setting ignoreSynchronization.
@@ -64,7 +66,7 @@ return {
                     arguments[0] = function () {
                         sets[ref] = undefined;
                         if (!filterTime || time < 5000) {
-                            window.testability.wait.oneLess();
+                            setTimeout(window.testability.wait.oneLess);
                         }
                         cb.apply(window, arguments);
                     };
@@ -78,7 +80,7 @@ return {
 
                 window[clear] = function () {
                     if (sets[arguments[0]]) {
-                        window.testability.wait.oneLess();
+                        setTimeout(window.testability.wait.oneLess);
                         sets[arguments[0]] = undefined;
                     }
                     return clearFn.apply(window, arguments);
@@ -94,7 +96,7 @@ return {
                     ref = setFn.apply(window, arguments);
 
                     ref.then(function (result) {
-                        window.testability.wait.oneLess();
+                        setTimeout(window.testability.wait.oneLess);
                         return result;
                     });
 
@@ -114,7 +116,7 @@ return {
                     testability.wait.oneMore();
                     this.addEventListener('readystatechange', function () {
                         if (this.readyState === 4) {
-                            testability.wait.oneLess();
+                            setTimeout(window.testability.wait.oneLess);
                         }
                     }, false);
                 }

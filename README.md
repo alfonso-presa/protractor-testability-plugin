@@ -19,7 +19,7 @@ Now add this to protractor.conf.js ()
 
 ```js
 plugins: [{
-	path: 'node_modules/protractor-testability-plugin'
+	package: 'protractor-testability-plugin'
 }],
 ```
 ## Automatic waits

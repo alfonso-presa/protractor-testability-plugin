@@ -7,11 +7,15 @@ test:
   - shell:protractor
   - sauce-connect-close
 
+local-test:
+  - connect:serve
+  - shell:protractor
+
 build:
   - clean
   - jshint:lib
 #  - jscs:lib
   - umd
   - concat
-  - test
+  - local-test
   - uglify

@@ -1,3 +1,16 @@
+<a name"1.1.0"></a>
+## 1.1.0 (2016-09-24)
+
+#### Features
+
+* Updated protractor version
+* Updated node compatiblity to >4
+
+#### Bug Fixes
+
+* Prevent racing conditions ([bb3f606e](https://github.com/alfonso-presa/protractor-testability-plugin/commit/bb3f606e))
+
+
 <a name"1.0.5"></a>
 ### 1.0.5 (2016-09-22)
 

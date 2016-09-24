@@ -1,5 +1,5 @@
-/*! protractor-testability-plugin - v1.0.4
- *  Release on: 2016-09-22
+/*! protractor-testability-plugin - v1.1.0
+ *  Release on: 2016-09-24
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -29,8 +29,6 @@ return {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
         browser.executeScript('if(!window.testability) {' + testability + '}');
         browser.executeScript(function () {
-            var setTimeout = window.setTimeout;
-
             if (!window.angular) {
                 // TODO: This is very very very (very^n) dirty...
                 // but the only way right now to make protractor work without setting ignoreSynchronization.
@@ -66,7 +64,7 @@ return {
                     arguments[0] = function () {
                         sets[ref] = undefined;
                         if (!filterTime || time < 5000) {
-                            setTimeout(window.testability.wait.oneLess);
+                            window.testability.wait.oneLess();
                         }
                         cb.apply(window, arguments);
                     };
@@ -80,7 +78,7 @@ return {
 
                 window[clear] = function () {
                     if (sets[arguments[0]]) {
-                        setTimeout(window.testability.wait.oneLess);
+                        window.testability.wait.oneLess();
                         sets[arguments[0]] = undefined;
                     }
                     return clearFn.apply(window, arguments);
@@ -96,7 +94,7 @@ return {
                     ref = setFn.apply(window, arguments);
 
                     ref.then(function (result) {
-                        setTimeout(window.testability.wait.oneLess);
+                        window.testability.wait.oneLess();
                         return result;
                     });
 
@@ -116,7 +114,7 @@ return {
                     testability.wait.oneMore();
                     this.addEventListener('readystatechange', function () {
                         if (this.readyState === 4) {
-                            setTimeout(window.testability.wait.oneLess);
+                            testability.wait.oneLess();
                         }
                     }, false);
                 }

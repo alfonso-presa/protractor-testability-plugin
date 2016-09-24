@@ -3,7 +3,9 @@ default:
 
 test:
   - connect:serve
+  - sauce_connect
   - protractor
+  - sauce-connect-close
 
 build:
   - clean

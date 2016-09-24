@@ -7,7 +7,3 @@ before_script:
 env:
   SAUCE_ACCESS_KEY=af8788b9-bde3-4e85-8557-cacfbac98cdc
   SAUCE_USERNAME=alfonso-presa
-addons:
-  sauce_connect:
-    username: "alfonso-presa"
-    access_key: "af8788b9-bde3-4e85-8557-cacfbac98cdc"

@@ -23,6 +23,8 @@ module.exports = function (grunt) {
     jitGrunt: {
       changelog: 'grunt-conventional-changelog',
       protractor: 'grunt-protractor-runner',
+      'sauce_connect': 'grunt-sauce-connect-launcher',
+      'sauce-connect-close': 'grunt-sauce-connect-launcher',
     }
   });
 };

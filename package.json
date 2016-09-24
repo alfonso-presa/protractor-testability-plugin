@@ -16,7 +16,9 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "protractor": "protractor test/protractor.conf.js",
+    "update-webdriver": "webdriver-manager update"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -29,16 +31,19 @@
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-groc": "^0.4.5",
     "grunt-jscs": "^1.1.0",
-    "grunt-protractor-runner": "^2.0.0",
     "grunt-sauce-connect-launcher": "^0.3.1",
+    "grunt-shell": "^1.3.1",
     "grunt-umd": "^2.3.0",
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
+    "protractor": ">=2.2.0",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "protractor": "^2.2.0",
     "testability.js": "0.x"
+  },
+  "peerDependencies": {
+    "protractor": ">=2.2.0"
   }
 }

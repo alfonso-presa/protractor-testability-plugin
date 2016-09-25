@@ -22,6 +22,7 @@ plugins: [{
 	package: 'protractor-testability-plugin'
 }],
 ```
+
 ## Automatic waits
 
 This plugin will make protractor wait automatically for the following async events:
@@ -43,6 +44,50 @@ testability && testability.wait.for(myPromise);
 This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
 
 Also check the test/samples folder of this repo for some working examples.
+
+## Map Protractor `browser` methods to any framework
+
+Angular provides a testability object that includes methods like `setLocation(url)`  for Protractor to use as `browser.setLocation(url)`. This plugin allows you to set `window.customAngularTestability` to an object of methods to map them to the framework of your app.
+
+All current Protractor browser methods can be [found here for v4.0.8](https://github.com/angular/protractor/blob/4.0.8/lib/clientsidescripts.js): see all uses of `angular.getTestability()`. If you are not using v4.0.8, check the source code for the version of Protractor you are using. Also try [searching for `getTestability`](https://github.com/angular/protractor/search?utf8=%E2%9C%93&q=getTestability) to see what methods Protractor is trying to use.
+
+Generally, if Protractor errors when you are trying to use a `browser` method in your tests for a non-Angular app, see if the error names a function that is missing: you can then provide that function via `window.customAngularTestability`.
+
+### Example
+
+In a Backbone app, to enable use of `browser.setLocation()` in your tests, include the following in your app code:
+```js
+window.customAngularTestability = {
+    setLocation: function (url) {
+        Backbone.history.navigate(url, true);
+    }
+};
+```
+
+Or as an inline plugin in your Protractor configuration, before this plugin:
+```js
+exports.config = {
+    plugins: [
+        {
+            inline: {
+                name: 'protractor-testability-backbone',
+                onPageLoad: function () {
+                    return browser.executeScript(function () {
+                        window.customTestability = {
+                            setLocation: function (url) {
+                                Backbone.history.navigate(url, true);
+                            }
+                        };
+                    });
+                }
+            }
+        },
+        {
+            package: 'protractor-testability-plugin'
+        }
+    ]
+};
+```
 
 ## License
 

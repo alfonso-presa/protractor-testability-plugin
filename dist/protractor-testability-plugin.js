@@ -1,5 +1,5 @@
 /*! protractor-testability-plugin - v1.1.0
- *  Release on: 2016-09-24
+ *  Release on: 2016-09-25
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -42,8 +42,24 @@ return {
                         };
                     },
                     getTestability: function () {
+                        // Allow users to set their own testability objects to
+                        // map anything Angular provides for Protractor to the
+                        // framework they're using.
+                        var whenStableDefault = function (cb) { cb(); };
+                        var customAngularTestability = window.customAngularTestability;
+                        if (customAngularTestability) {
+                            // Allow setting custom whenStable of any value if
+                            // it's assigned. If not assigned, use default.
+                            // The user may want to set whenStable to anything,
+                            // even falsey, for testing reasons, so they should
+                            // be allowed to do so.
+                            if (typeof customAngularTestability.whenStable === 'undefined') {
+                                customAngularTestability.whenStable = whenStableDefault;
+                            }
+                            return customAngularTestability;
+                        }
                         return {
-                            whenStable: function (cb) { cb(); }
+                            whenStable: whenStableDefault
                         };
                     }
                 };

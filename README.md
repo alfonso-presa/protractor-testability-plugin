@@ -22,6 +22,7 @@ plugins: [{
 	package: 'protractor-testability-plugin'
 }],
 ```
+
 ## Automatic waits
 
 This plugin will make protractor wait automatically for the following async events:
@@ -43,6 +44,44 @@ testability && testability.wait.for(myPromise);
 This plugin will include testability.js in the page for you when testing in protractor, but it will not be there in other situations. You can avoid checking for the testability object everytime if you include it directly on the page.
 
 Also check the test/samples folder of this repo for some working examples.
+
+## Map Protractor `browser` methods to any framework
+
+Angular provides a testability object that includes methods like `setLocation(url)`  for Protractor to use as `browser.setLocation(url)`. This plugin allows you to set `customFrameworkTestability` to an object of methods to map them to the framework of your app.
+```js
+exports.config = {
+    plugins: [
+        {
+            package: 'protractor-testability-plugin',
+            customFrameworkTestability: {
+                // Methods go here
+            }
+        }
+    ]
+};
+```
+
+All current Protractor browser methods can be [found here for v4.0.8](https://github.com/angular/protractor/blob/4.0.8/lib/clientsidescripts.js): see all uses of `angular.getTestability()`. If you are not using v4.0.8, check the source code for the version of Protractor you are using. Also try [searching for `getTestability`](https://github.com/angular/protractor/search?utf8=%E2%9C%93&q=getTestability) to see what methods Protractor is trying to use.
+
+Generally, if Protractor errors when you are trying to use a `browser` method in your tests for a non-Angular app, see if the error names a function that is missing: you can then provide that function via `customFrameworkTestability`.
+
+### Example
+
+In a Backbone app, to enable use of `browser.setLocation()` in your tests, include the following with this plugin's configuration:
+```js
+exports.config = {
+    plugins: [
+        {
+            package: 'protractor-testability-plugin',
+            customFrameworkTestability: {
+                setLocation: function (route) {
+                    Backbone.history.navigate(route, true);
+                }
+            }
+        }
+    ]
+};
+```
 
 ## License
 

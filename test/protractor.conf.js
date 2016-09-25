@@ -16,7 +16,12 @@ var config = {
   specs: ['specs/testability.spec.js'],
 
   plugins: [{
-    path: '..'
+    path: '..',
+    testability: {
+        whenStable: function (cb) {
+            setTimeout(cb,5000);
+        }
+    }
   }],
 
   sauceUser: process.env.SAUCE_USERNAME,

@@ -1,5 +1,5 @@
 /*! protractor-testability-plugin - v1.1.0
- *  Release on: 2016-09-24
+ *  Release on: 2016-09-25
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -28,7 +28,11 @@ return {
     onPageLoad: function () {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
         browser.executeScript('if(!window.testability) {' + testability + '}');
-        browser.executeScript(function () {
+        browser.executeScript(function (customTestability) {
+            customTestability = customTestability && JSON.parse(customTestability, function reviver (key, item) {
+                return typeof item === 'string' && item.indexOf('var temp=') === 0 ? eval(item): item;// jshint ignore:line
+            });
+
             var setTimeout = window.setTimeout;
 
             if (!window.angular) {
@@ -42,9 +46,9 @@ return {
                         };
                     },
                     getTestability: function () {
-                        return {
-                            whenStable: function (cb) { cb(); }
-                        };
+                        var testability = customTestability || {};
+                        testability.whenStable = testability.whenStable || function (cb) { cb(); };
+                        return testability;
                     }
                 };
 
@@ -124,7 +128,9 @@ return {
             };
 
             patchPromiseFunction('fetch');
-        });
+        }, JSON.stringify(this.config.testability, function replacer (key, item) {
+            return typeof item === 'function' ? 'var temp=' + item.toString() + ';temp;': item;
+        }));
     },
     waitForPromise: function () {
         return browser.executeAsyncScript(

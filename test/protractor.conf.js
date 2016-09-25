@@ -16,7 +16,16 @@ var config = {
   specs: ['specs/testability.spec.js'],
 
   plugins: [{
-    path: '..'
+    path: '..',
+    customFrameworkTestability: {
+        whenStable: function (cb) {
+            var log = document.createElement('div');
+            log.id = 'stableLog';
+            log.innerHTML = 'whenStable Called!!';
+            document.getElementsByTagName('body')[0].appendChild(log);
+            cb();
+        }
+    }
   }],
 
   sauceUser: process.env.SAUCE_USERNAME,

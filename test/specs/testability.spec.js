@@ -11,6 +11,7 @@ describe('protractor-testability-plugin', function () {
 		it('should wait for stable testability.js when running plain old javascript', function () {
 			element(by.id('work')).click();
 			expect(element(by.id('placeholder')).getText()).toBe('done!!');
+            expect(element(by.id('stableLog')).getText()).toBe('whenStable Called!!');
 		});
 	});
 

@@ -17,5 +17,6 @@ build:
 #  - jscs:lib
   - umd
   - concat
+  - copy:client
   - local-test
   - uglify

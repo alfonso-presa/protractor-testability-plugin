@@ -1,4 +1,4 @@
-/*! protractor-testability-plugin - v1.1.0
+/*! protractor-testability-plugin - v1.2.0
  *  Release on: 2016-10-08
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */

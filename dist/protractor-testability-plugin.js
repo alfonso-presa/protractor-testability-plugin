@@ -1,5 +1,5 @@
 /*! protractor-testability-plugin - v1.1.0
- *  Release on: 2016-10-07
+ *  Release on: 2016-10-08
  *  Copyright (c) 2016 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
@@ -23,11 +23,11 @@
 
 var fs = require('fs');
 
-return {
+return (module.exports = {
     name: 'protractor-testability-plugin',
     onPageLoad: function () {
         var testability = fs.readFileSync(require.resolve('testability.js')).toString();
-        var browserInstrumentation = require('./client/instrument-browser');
+        var browserInstrumentation = require('testability-browser-bindings');
         var protractorBindings = require('./client/protractor-bindings');
 
         browser.executeScript('if(!window.testability) {' + testability + '}');
@@ -48,7 +48,7 @@ return {
             }
         });
     }
-};
+});
 
 
 }));

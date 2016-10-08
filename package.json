@@ -42,7 +42,8 @@
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "testability.js": "0.x"
+    "testability.js": "0.x",
+    "testability-browser-bindings": "1.x"
   },
   "peerDependencies": {
     "protractor": ">=2.2.0"

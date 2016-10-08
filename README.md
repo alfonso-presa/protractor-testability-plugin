@@ -28,7 +28,7 @@ plugins: [{
 This plugin will make protractor wait automatically for the following async events:
 
 * Ajax requests
-* setTimeout/clearTimeout, setInterval/clearInterval: only if it's time is below 5 seconds, because otherwise it's considered a timeout.
+* setTimeout/clearTimeout: only if it's time is below 5 seconds, because otherwise it's considered a timeout.
 * setImmediate/clearImmediate
 * fetch
 

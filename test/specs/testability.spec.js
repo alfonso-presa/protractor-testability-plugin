@@ -17,13 +17,11 @@ describe('protractor-testability-plugin', function () {
 
     describe('real SPA web tests', function () {
 
-		it('should work in google', function () {
-			browser.get('http://www.google.com/');
-			element(by.css('input.gsfi#lst-ib')).sendKeys('search for something');
-            element(by.css('button.lsb')).click();
-            expect(element(by.css('.srg h3.r')).isPresent()).toBe(true);
+		fit('should work in google', function () {
+			browser.get('https://design.google.com');
+            element(by.css('[data-nav-state-slug=about]')).click();
+            expect(element(by.css('#follow h2._title')).getText()).toBe('Follow Google Design');
 		});
-
 	});
 
 	describe('ajax jquery sample', function () {

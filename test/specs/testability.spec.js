@@ -17,7 +17,7 @@ describe('protractor-testability-plugin', function () {
 
     describe('real SPA web tests', function () {
 
-		fit('should work in google', function () {
+		xit('should work in google', function () {
 			browser.get('https://design.google.com');
             element(by.css('[data-nav-state-slug=about]')).click();
             expect(element(by.css('#follow h2._title')).getText()).toBe('Follow Google Design');

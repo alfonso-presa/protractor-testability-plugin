@@ -1,3 +1,21 @@
+<a name"1.2.0"></a>
+## 1.2.0 (2017-11-23)
+
+
+#### Bug Fixes
+
+* execute testability in window context ([744c6874](https://github.com/alfonso-presa/protractor-testability-plugin/commit/744c6874))
+* exclude failing test ([c3c30252](https://github.com/alfonso-presa/protractor-testability-plugin/commit/c3c30252))
+* Regression - Race conditions ([0f6ffaa2](https://github.com/alfonso-presa/protractor-testability-plugin/commit/0f6ffaa2))
+* Prevent racing conditions ([bb3f606e](https://github.com/alfonso-presa/protractor-testability-plugin/commit/bb3f606e))
+* **bindings:** setInterval should not be monkey patched ([5605d894](https://github.com/alfonso-presa/protractor-testability-plugin/commit/5605d894))
+* **travis:** Remove node 4 and 5 as not supported by protractor latests versions ([8fd2cfb6](https://github.com/alfonso-presa/protractor-testability-plugin/commit/8fd2cfb6))
+
+
+#### Features
+
+* **testability:** Custom testability object per configuration ([2808ac45](https://github.com/alfonso-presa/protractor-testability-plugin/commit/2808ac45))
+
 <a name"1.1.0"></a>
 ## 1.1.0 (2016-09-24)
 

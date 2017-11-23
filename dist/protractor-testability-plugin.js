@@ -1,6 +1,6 @@
 /*! protractor-testability-plugin - v1.2.0
- *  Release on: 2016-10-08
- *  Copyright (c) 2016 Alfonso Presa
+ *  Release on: 2017-11-23
+ *  Copyright (c) 2017 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -8,7 +8,7 @@
     define([], function () {
       return (factory());
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
@@ -30,7 +30,9 @@ return (module.exports = {
         var browserInstrumentation = require('testability-browser-bindings');
         var protractorBindings = require('./client/protractor-bindings');
 
-        browser.executeScript('if(!window.testability) {' + testability + '}');
+        browser.executeScript('if(!window.testability) {(function(){' +
+            testability +
+        '}.bind(window))()}');
         browser.executeScript(browserInstrumentation);
         browser.executeScript(
             protractorBindings,
@@ -40,9 +42,11 @@ return (module.exports = {
         );
     },
     waitForPromise: function () {
-        return browser.executeAsyncScript(
-        'return window.testability && window.testability.when.ready.apply(null,arguments)')
-        .then(function (browserErr) {
+        return browser.executeAsyncScript(function (cb) {
+            return window.testability ?
+                window.testability.when.ready(cb):
+                cb('Error, testability is not loaded in the browser window :-(.');
+        }).then(function (browserErr) {
             if (browserErr) {
                 throw 'Error while waiting to sync with the page: ' + JSON.stringify(browserErr);
             }

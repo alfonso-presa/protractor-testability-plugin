@@ -62,7 +62,7 @@ if (process.env.TRAVIS_BUILD_NUMBER){
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       name: 'protractor-testability-plugin IE10'
     },, {
-        'browserName': 'edge',
+        'browserName': 'MicrosoftEdge',
         build: process.env.TRAVIS_BUILD_NUMBER,
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
         name: 'protractor-testability-plugin Edge'

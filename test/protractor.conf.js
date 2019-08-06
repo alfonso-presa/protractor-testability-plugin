@@ -40,14 +40,12 @@ var config = {
 if (process.env.TRAVIS_BUILD_NUMBER){
   config.multiCapabilities= [{
       'browserName': 'firefox',
-      'version': '39',
       build: process.env.TRAVIS_BUILD_NUMBER,
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       name: 'protractor-testability-plugin Firefox',
       specs: ['specs/*.spec.js']
     }, {
       'browserName': 'chrome',
-      'version': '42',
       build: process.env.TRAVIS_BUILD_NUMBER,
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       name: 'protractor-testability-plugin Chrome',
@@ -60,20 +58,18 @@ if (process.env.TRAVIS_BUILD_NUMBER){
       name: 'protractor-testability-plugin Safari'
     }, {
       'browserName': 'internet explorer',
-      'version': '10',
+      'version': '11',
       build: process.env.TRAVIS_BUILD_NUMBER,
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      name: 'protractor-testability-plugin IE10'
+      name: 'protractor-testability-plugin IE11'
     }];
 }
 else {
     config.multiCapabilities= [{
       'browserName': 'firefox',
-      'version': '28',
       name: 'protractor-testability-plugin Firefox'
     }, {
       'browserName': 'chrome',
-      'version': '34',
       name: 'protractor-testability-plugin Chrome'
     }];
 }

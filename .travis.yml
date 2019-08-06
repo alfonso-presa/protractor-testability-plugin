@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-- 6
+- 10
 before_install: npm install -g grunt-cli
-env:
-  SAUCE_ACCESS_KEY=af8788b9-bde3-4e85-8557-cacfbac98cdc
-  SAUCE_USERNAME=alfonso-presa
+addons:
+  sauce_connect: true

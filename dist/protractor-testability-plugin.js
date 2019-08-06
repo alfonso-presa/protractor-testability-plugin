@@ -1,6 +1,6 @@
 /*! protractor-testability-plugin - v1.2.0
- *  Release on: 2017-11-23
- *  Copyright (c) 2017 Alfonso Presa
+ *  Release on: 2019-08-06
+ *  Copyright (c) 2019 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -33,7 +33,14 @@ return (module.exports = {
         browser.executeScript('if(!window.testability) {(function(){' +
             testability +
         '}.bind(window))()}');
-        browser.executeScript(browserInstrumentation);
+        browser.executeScript(function (browserInstrumentation) {
+            var head = document.getElementsByTagName('head')[0];
+            var scriptText='(' + browserInstrumentation + ')();';
+            var scriptEl = document.createElement( 'script' );
+            scriptEl.type = 'text/javascript';
+            scriptEl.textContent = scriptText;
+            head.insertBefore( scriptEl, head.firstChild );
+        }, browserInstrumentation.toString());
         browser.executeScript(
             protractorBindings,
             JSON.stringify(this.config.customFrameworkTestability, function replacer (key, item) {

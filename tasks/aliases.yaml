@@ -3,9 +3,7 @@ default:
 
 test:
   - connect:serve
-  - sauce_connect
   - shell:protractor
-  - sauce-connect-close
 
 local-test:
   - connect:serve

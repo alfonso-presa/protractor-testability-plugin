@@ -16,6 +16,7 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
+    "build": "grunt build",
     "test": "grunt test",
     "protractor": "protractor test/protractor.conf.js",
     "update-webdriver": "webdriver-manager update"

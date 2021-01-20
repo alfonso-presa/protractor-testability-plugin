@@ -1,6 +1,6 @@
 {
   "name": "protractor-testability-plugin",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "",
   "main": "dist/protractor-testability-plugin.js",
   "readmeFilename": "README.md",
@@ -16,6 +16,7 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
+    "build": "grunt build",
     "test": "grunt test",
     "protractor": "protractor test/protractor.conf.js",
     "update-webdriver": "webdriver-manager update"
@@ -41,7 +42,7 @@
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
-    "testability-browser-bindings": "^2.0.0",
+    "testability-browser-bindings": "^3.0.0",
     "testability.js": "0.x"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
-/*! protractor-testability-plugin - v1.2.0
- *  Release on: 2019-08-06
- *  Copyright (c) 2019 Alfonso Presa
+/*! protractor-testability-plugin - v2.0.2
+ *  Release on: 2021-05-21
+ *  Copyright (c) 2021 Alfonso Presa
  *  Licensed MIT */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -33,14 +33,15 @@ return (module.exports = {
         browser.executeScript('if(!window.testability) {(function(){' +
             testability +
         '}.bind(window))()}');
-        browser.executeScript(function (browserInstrumentation) {
-            var head = document.getElementsByTagName('head')[0];
-            var scriptText='(' + browserInstrumentation + ')();';
-            var scriptEl = document.createElement( 'script' );
-            scriptEl.type = 'text/javascript';
-            scriptEl.textContent = scriptText;
-            head.insertBefore( scriptEl, head.firstChild );
-        }, browserInstrumentation.toString());
+        //browser.executeScript(function (browserInstrumentation) {
+            //var head = document.getElementsByTagName('head')[0];
+            //var scriptText='(' + browserInstrumentation + ')();';
+            //var scriptEl = document.createElement( 'script' );
+            //scriptEl.type = 'text/javascript';
+            //scriptEl.textContent = scriptText;
+            //head.insertBefore( scriptEl, head.firstChild );
+        //}, browserInstrumentation.toString());
+        browser.executeScript(browserInstrumentation);
         browser.executeScript(
             protractorBindings,
             JSON.stringify(this.config.customFrameworkTestability, function replacer (key, item) {
@@ -55,7 +56,7 @@ return (module.exports = {
                 cb('Error, testability is not loaded in the browser window :-(.');
         }).then(function (browserErr) {
             if (browserErr) {
-                throw 'Error while waiting to sync with the page: ' + JSON.stringify(browserErr);
+                console.log('Error while waiting to sync with the page: ' + JSON.stringify(browserErr));
             }
         });
     }

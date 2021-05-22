@@ -33,14 +33,15 @@ return (module.exports = {
         browser.executeScript('if(!window.testability) {(function(){' +
             testability +
         '}.bind(window))()}');
-        browser.executeScript(function (browserInstrumentation) {
-            var head = document.getElementsByTagName('head')[0];
-            var scriptText='(' + browserInstrumentation + ')();';
-            var scriptEl = document.createElement( 'script' );
-            scriptEl.type = 'text/javascript';
-            scriptEl.textContent = scriptText;
-            head.insertBefore( scriptEl, head.firstChild );
-        }, browserInstrumentation.toString());
+        //browser.executeScript(function (browserInstrumentation) {
+            //var head = document.getElementsByTagName('head')[0];
+            //var scriptText='(' + browserInstrumentation + ')();';
+            //var scriptEl = document.createElement( 'script' );
+            //scriptEl.type = 'text/javascript';
+            //scriptEl.textContent = scriptText;
+            //head.insertBefore( scriptEl, head.firstChild );
+        //}, browserInstrumentation.toString());
+        browser.executeScript(browserInstrumentation);
         browser.executeScript(
             protractorBindings,
             JSON.stringify(this.config.customFrameworkTestability, function replacer (key, item) {
